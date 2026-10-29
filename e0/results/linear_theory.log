@@ -1,0 +1,55 @@
+1. quasi-static forgetting (measured / predicted):
+  r=0.2: t100: 1.245  t1000: 1.083  t3000: 1.078
+  r=0.5: t100: 1.129  t1000: 1.030  t3000: 1.021
+  r=0.8: t100: 1.038  t1000: 1.017  t3000: 1.008
+2. U shape, T = max(T_A, T_B):
+  r=0.05  T=2454  T_A=2454  T_B=68  max=2454
+  r=0.10  T=1236  T_A=1236  T_B=72  max=1236
+  r=0.15  T=827  T_A=827  T_B=78  max=827
+  r=0.20  T=620  T_A=620  T_B=84  max=620
+  r=0.25  T=492  T_A=492  T_B=91  max=492
+  r=0.30  T=405  T_A=405  T_B=100  max=405
+  r=0.35  T=340  T_A=340  T_B=110  max=340
+  r=0.40  T=288  T_A=288  T_B=122  max=288
+  r=0.45  T=244  T_A=244  T_B=137  max=244
+  r=0.50  T=204  T_A=204  T_B=154  max=204
+  r=0.55  T=175  T_A=163  T_B=175  max=175
+  r=0.60  T=202  T_A=113  T_B=202  max=202
+  r=0.65  T=236  T_A=0  T_B=236  max=236
+  r=0.70  T=282  T_A=0  T_B=282  max=282
+  r=0.75  T=347  T_A=0  T_B=347  max=347
+  r=0.80  T=443  T_A=0  T_B=443  max=443
+  r=0.85  T=602  T_A=0  T_B=602  max=602
+  r=0.90  T=916  T_A=0  T_B=916  max=916
+  r=0.95  T=1843  T_A=0  T_B=1843  max=1843
+3. schedule invariance (relative distance to the closest joint solution):
+  fixed r=0.2            5.70e-15
+  fixed r=0.7            5.55e-15
+  switching 0.2 -> 0.8   6.51e-15
+  normbal_lr             5.08e-15
+4. receding-horizon re-planning with an exact model:
+  seed=0 scaleB=1.00: r*=0.55 T*=175  P_lin2 r=0.55  MPC regret=1.000  best two-phase 0.05->0.65 at t=70: regret=0.863
+  seed=0 scaleB=3.00: r*=0.05 T*=34  P_lin2 r=0.05  MPC regret=1.000  best two-phase 0.05->0.05 at t=0: regret=1.000
+  seed=0 scaleB=0.33: r*=0.35 T*=783  P_lin2 r=0.35  MPC regret=1.000  best two-phase 0.25->0.45 at t=626: regret=0.962
+  seed=1 scaleB=1.00: r*=0.55 T*=142  P_lin2 r=0.55  MPC regret=1.000  best two-phase 0.25->0.75 at t=85: regret=0.859
+  seed=1 scaleB=3.00: r*=0.05 T*=31  P_lin2 r=0.05  MPC regret=1.000  best two-phase 0.05->0.05 at t=0: regret=1.000
+  seed=1 scaleB=0.33: r*=0.35 T*=588  P_lin2 r=0.35  MPC regret=1.000  best two-phase 0.15->0.55 at t=470: regret=0.954
+  seed=2 scaleB=1.00: r*=0.55 T*=170  P_lin2 r=0.55  MPC regret=0.959  best two-phase 0.25->0.7 at t=102: regret=0.835
+  seed=2 scaleB=3.00: r*=0.05 T*=37  P_lin2 r=0.05  MPC regret=1.000  best two-phase 0.05->0.05 at t=0: regret=1.000
+  seed=2 scaleB=0.33: r*=0.35 T*=663  P_lin2 r=0.35  MPC regret=0.988  best two-phase 0.15->0.35 at t=265: regret=0.916
+6. norm ratio vs rho:
+  r=0.3 t=10: ratio 0.575  rho 0.570
+  r=0.3 t=100: ratio 0.693  rho 0.665
+  r=0.3 t=1000: ratio 0.783  rho 0.770
+  r=0.5 t=10: ratio 0.556  rho 0.575
+  r=0.5 t=100: ratio 0.618  rho 0.600
+  r=0.5 t=1000: ratio 0.758  rho 0.752
+  r=0.8 t=10: ratio 0.545  rho 0.580
+  r=0.8 t=100: ratio 0.589  rho 0.582
+  r=0.8 t=1000: ratio 0.672  rho 0.669
+5. gradient-statistics controllers (per-method tuned step size; sim2.py):
+  alpha=0.5 scaleB=1.00: best fixed fixed_r=0.5 T=34; normbal(ratio only): 2069, normbal_lr: 34, A-GEM: None, lossbal(MEGA-I no switch): 36, MEGA-I(eps=1e-3): 93
+  alpha=0.5 scaleB=3.00: best fixed fixed_r=0.7 T=28; normbal(ratio only): 1708, normbal_lr: 34, A-GEM: None, lossbal(MEGA-I no switch): 36, MEGA-I(eps=1e-3): 262
+  alpha=0.5 scaleB=0.33: best fixed fixed_r=0.2 T=58; normbal(ratio only): 18598, normbal_lr: 54, A-GEM: None, lossbal(MEGA-I no switch): None, MEGA-I(eps=1e-3): None
+  alpha=1.0 scaleB=1.00: best fixed fixed_r=0.5 T=344; normbal(ratio only): 18753, normbal_lr: 278, A-GEM: None, lossbal(MEGA-I no switch): 596, MEGA-I(eps=1e-3): 895
+written e0/results/linear_theory.json and fig_linear.png

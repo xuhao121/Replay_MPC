@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+data/
+results/_claims/
+results/_bench/
+results/manual/
+STOP
+*.tmp.*

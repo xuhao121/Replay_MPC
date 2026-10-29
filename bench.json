@@ -1,0 +1,105 @@
+{
+ "E1_ref_hours": 0.0212,
+ "E1_ref_timer": {
+  "setup": {
+   "sec": 0.255,
+   "n": 1
+  },
+  "kernel_full": {
+   "sec": 0.573,
+   "n": 18
+  },
+  "phaseA": {
+   "sec": 0.387,
+   "n": 1
+  },
+  "plan": {
+   "sec": 64.301,
+   "n": 45
+  },
+  "plan_decide": {
+   "sec": 0.549,
+   "n": 1
+  },
+  "kernel_sub": {
+   "sec": 0.008,
+   "n": 26
+  },
+  "oracle": {
+   "sec": 4.822,
+   "n": 1
+  },
+  "step_timing": {
+   "sec": 0.076,
+   "n": 1
+  },
+  "mpc": {
+   "sec": 57.515,
+   "n": 2
+  },
+  "gradstat": {
+   "sec": 3.62,
+   "n": 1
+  }
+ },
+ "E1_ref_peak_gb": 8.49,
+ "gpu": "NVIDIA B200",
+ "E2_ref_hours": 0.3283,
+ "E2_ref_timer": {
+  "setup": {
+   "sec": 0.757,
+   "n": 1
+  },
+  "kernel_full": {
+   "sec": 64.016,
+   "n": 18
+  },
+  "phaseA": {
+   "sec": 1.567,
+   "n": 1
+  },
+  "plan": {
+   "sec": 8.427,
+   "n": 32
+  },
+  "plan_decide": {
+   "sec": 0.286,
+   "n": 1
+  },
+  "kernel_sub": {
+   "sec": 1.718,
+   "n": 19
+  },
+  "oracle": {
+   "sec": 1027.922,
+   "n": 1
+  },
+  "step_timing": {
+   "sec": 2.746,
+   "n": 1
+  },
+  "mpc": {
+   "sec": 132.787,
+   "n": 1
+  }
+ },
+ "E2_ref_peak_gb": 38.78,
+ "concurrent_E1": {
+  "2": {
+   "wall_hours": 0.0468,
+   "speedup": 0.91
+  },
+  "4": {
+   "wall_hours": 0.0925,
+   "speedup": 0.92
+  },
+  "6": {
+   "wall_hours": 0.1387,
+   "speedup": 0.92
+  },
+  "8": {
+   "wall_hours": 0.1847,
+   "speedup": 0.92
+  }
+ }
+}
