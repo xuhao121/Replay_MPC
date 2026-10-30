@@ -1,5 +1,7 @@
 __pycache__/
 *.pyc
 data/
+results/summary/
+results/figures/
 STOP
 *.tmp.*
