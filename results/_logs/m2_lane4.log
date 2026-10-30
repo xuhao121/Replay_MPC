@@ -1,0 +1,214 @@
+10-29 22:36:20 [m2/lane4] start device=cuda mem<=13.0 GB priorities=['P0', 'P1', 'P2', 'P3'] exp=all deadline=2026-11-08T20:00 slowdown=2.0
+10-29 22:36:20 [m2/lane4] run E1_rot_sym_mlp_1024_0.3_0_2_db7c6d26 (P0, est 0.02 h, 12 GB)
+10-29 22:36:21 [m2/lane4] [E1_rot_sym_mlp_1024_0.3_0_2_db7c6d26] n=2000 P=813056 kernel=analytic device=cuda
+10-29 22:36:39 [m2/lane4] [E1_rot_sym_mlp_1024_0.3_0_2_db7c6d26] phase A: 2990 steps, L_A=0.0009, L_B=0.637, eta=3.416
+10-29 22:39:07 [m2/lane4] [E1_rot_sym_mlp_1024_0.3_0_2_db7c6d26] oracle: r_best=0.45 T_best=870  r_lin=0.45 T_hat=950 H=3800 M=95
+10-29 22:51:25 [m2/lane4] [E1_rot_sym_mlp_1024_0.3_0_2_db7c6d26] done in 905.4 s; plin2=1.000, mpc_0.05=0.992, mpcpe_0.2=0.992, mpc2_0.05=0.931, trig_0.05=1.000, replan_only=0.992, periodic=0.992, mpc_0.02=0.992, mpc_0.1=0.992, mpcpe_0.1=0.992
+10-29 22:51:25 [m2/lane4] done E1_rot_sym_mlp_1024_0.3_0_2_db7c6d26 in 0.25 h
+10-29 22:51:25 [m2/lane4] run E1_perm_sym_mlp_1024_0.3_0_0_3d7eccf9 (P0, est 0.02 h, 12 GB)
+10-29 22:51:26 [m2/lane4] [E1_perm_sym_mlp_1024_0.3_0_0_3d7eccf9] n=2000 P=813056 kernel=analytic device=cuda
+10-29 22:51:59 [m2/lane4] [E1_perm_sym_mlp_1024_0.3_0_0_3d7eccf9] phase A: 6454 steps, L_A=0.0009, L_B=0.575, eta=1.695
+10-29 22:54:46 [m2/lane4] [E1_perm_sym_mlp_1024_0.3_0_0_3d7eccf9] oracle: r_best=0.15 T_best=1087  r_lin=0.15 T_hat=1141 H=4564 M=114
+10-29 23:09:25 [m2/lane4] [E1_perm_sym_mlp_1024_0.3_0_0_3d7eccf9] done in 1079.3 s; plin2=1.000, mpc_0.05=0.966, mpcpe_0.2=0.966, mpc2_0.05=0.937, trig_0.05=1.000, replan_only=0.966, periodic=0.961
+10-29 23:09:25 [m2/lane4] done E1_perm_sym_mlp_1024_0.3_0_0_3d7eccf9 in 0.30 h
+10-29 23:09:25 [m2/lane4] run E1_rot_smallA_mlp_1024_0.01_0_1_35c2ec99 (P0, est 0.02 h, 12 GB)
+10-29 23:09:25 [m2/lane4] [E1_rot_smallA_mlp_1024_0.01_0_1_35c2ec99] n=2000 P=813056 kernel=analytic device=cuda
+10-29 23:09:31 [m2/lane4] [E1_rot_smallA_mlp_1024_0.01_0_1_35c2ec99] phase A: 279 steps, L_A=0.00088, L_B=0.673, eta=0.367
+10-29 23:10:15 [m2/lane4] [E1_rot_smallA_mlp_1024_0.01_0_1_35c2ec99] oracle: r_best=0.35 T_best=510  r_lin=0.35 T_hat=427 H=1708 M=42
+10-29 23:16:53 [m2/lane4] [E1_rot_smallA_mlp_1024_0.01_0_1_35c2ec99] done in 448.7 s; plin2=1.000, mpc_0.05=0.990, mpcpe_0.2=0.990, mpc2_0.05=0.978, trig_0.05=0.990, replan_only=1.076, periodic=0.990
+10-29 23:16:53 [m2/lane4] done E1_rot_smallA_mlp_1024_0.01_0_1_35c2ec99 in 0.12 h
+10-29 23:16:54 [m2/lane4] run E1_rot_smallA_mlp_1024_1.0_0_0_b2da8e24 (P0, est 0.02 h, 12 GB)
+10-29 23:16:54 [m2/lane4] [E1_rot_smallA_mlp_1024_1.0_0_0_b2da8e24] n=2000 P=813056 kernel=analytic device=cuda
+10-29 23:17:27 [m2/lane4] [E1_rot_smallA_mlp_1024_1.0_0_0_b2da8e24] phase A: 3672 steps, L_A=0.000899, L_B=0.668, eta=3.249
+10-29 23:21:37 [m2/lane4] [E1_rot_smallA_mlp_1024_1.0_0_0_b2da8e24] oracle: r_best=0.35 T_best=2098  r_lin=0.35 T_hat=2219 H=8876 M=221
+10-29 23:49:10 [m2/lane4] [E1_rot_smallA_mlp_1024_1.0_0_0_b2da8e24] done in 1936.2 s; plin2=1.000, mpc_0.05=1.000, mpcpe_0.2=1.000, mpc2_0.05=0.980, trig_0.05=1.000, replan_only=1.000, periodic=1.000
+10-29 23:49:10 [m2/lane4] done E1_rot_smallA_mlp_1024_1.0_0_0_b2da8e24 in 0.54 h
+10-29 23:49:10 [m2/lane4] run E1_rot_tightA_mlp_1024_1.0_0_1_db19eaea (P0, est 0.02 h, 12 GB)
+10-29 23:49:10 [m2/lane4] [E1_rot_tightA_mlp_1024_1.0_0_1_db19eaea] n=2000 P=813056 kernel=analytic device=cuda
+10-29 23:49:42 [m2/lane4] [E1_rot_tightA_mlp_1024_1.0_0_1_db19eaea] phase A: 5701 steps, L_A=0.0009, L_B=0.661, eta=5.226
+10-29 23:52:09 [m2/lane4] [E1_rot_tightA_mlp_1024_1.0_0_1_db19eaea] oracle: r_best=0.75 T_best=1539  r_lin=0.75 T_hat=1570 H=6280 M=157
+10-30 00:10:34 [m2/lane4] [E1_rot_tightA_mlp_1024_1.0_0_1_db19eaea] done in 1283.7 s; plin2=1.000, mpc_0.05=1.000, mpcpe_0.2=1.000, mpc2_0.05=0.736, trig_0.05=1.000, replan_only=1.000, periodic=0.990
+10-30 00:10:34 [m2/lane4] done E1_rot_tightA_mlp_1024_1.0_0_1_db19eaea in 0.36 h
+10-30 00:10:34 [m2/lane4] run E1_rot_tinyA_mlp_1024_0.01_0_2_20f1feb0 (P1, est 0.02 h, 12 GB)
+10-30 00:10:34 [m2/lane4] [E1_rot_tinyA_mlp_1024_0.01_0_2_20f1feb0] n=2000 P=813056 kernel=analytic device=cuda
+10-30 00:10:42 [m2/lane4] [E1_rot_tinyA_mlp_1024_0.01_0_2_20f1feb0] phase A: 278 steps, L_A=0.0009, L_B=0.696, eta=0.1469
+10-30 00:14:16 [m2/lane4] [E1_rot_tinyA_mlp_1024_0.01_0_2_20f1feb0] oracle: r_best=0.3 T_best=1420  r_lin=0.25 T_hat=1253 H=5012 M=125
+10-30 00:34:50 [m2/lane4] [E1_rot_tinyA_mlp_1024_0.01_0_2_20f1feb0] done in 1456.7 s; plin2=1.029, mpc_0.05=0.965, mpcpe_0.2=0.969, mpc2_0.05=0.952, trig_0.05=0.973, replan_only=0.970, periodic=0.965
+10-30 00:34:50 [m2/lane4] done E1_rot_tinyA_mlp_1024_0.01_0_2_20f1feb0 in 0.40 h
+10-30 00:34:50 [m2/lane4] run E1_rot_tinyA_mlp_1024_0.3_0_2_09a5309a (P1, est 0.02 h, 12 GB)
+10-30 00:34:51 [m2/lane4] [E1_rot_tinyA_mlp_1024_0.3_0_2_09a5309a] n=2000 P=813056 kernel=analytic device=cuda
+10-30 00:35:16 [m2/lane4] [E1_rot_tinyA_mlp_1024_0.3_0_2_09a5309a] phase A: 2412 steps, L_A=0.0009, L_B=0.667, eta=1.303
+10-30 00:43:31 [m2/lane4] [E1_rot_tinyA_mlp_1024_0.3_0_2_09a5309a] oracle: r_best=0.25 T_best=3098  r_lin=0.25 T_hat=4040 H=16160 M=404
+10-30 01:31:26 [m2/lane4] [E1_rot_tinyA_mlp_1024_0.3_0_2_09a5309a] done in 3395.4 s; plin2=1.000, mpc_0.05=0.969, mpcpe_0.2=0.969, mpc2_0.05=0.964, trig_0.05=0.969, replan_only=0.977, periodic=0.970
+10-30 01:31:26 [m2/lane4] done E1_rot_tinyA_mlp_1024_0.3_0_2_09a5309a in 0.94 h
+10-30 01:31:26 [m2/lane4] run E1_rot_bigA_mlp_1024_0.03_0_2_b8cccfd5 (P1, est 0.02 h, 12 GB)
+10-30 01:31:26 [m2/lane4] [E1_rot_bigA_mlp_1024_0.03_0_2_b8cccfd5] n=2000 P=813056 kernel=analytic device=cuda
+10-30 01:31:41 [m2/lane4] [E1_rot_bigA_mlp_1024_0.03_0_2_b8cccfd5] phase A: 1073 steps, L_A=0.000899, L_B=0.617, eta=0.5603
+10-30 01:32:40 [m2/lane4] [E1_rot_bigA_mlp_1024_0.03_0_2_b8cccfd5] oracle: r_best=0.5 T_best=388  r_lin=0.5 T_hat=311 H=1244 M=31
+10-30 01:36:53 [m2/lane4] [E1_rot_bigA_mlp_1024_0.03_0_2_b8cccfd5] done in 327.0 s; plin2=1.000, mpc_0.05=0.959, mpcpe_0.2=0.956, mpc2_0.05=0.853, trig_0.05=0.966, replan_only=0.951, periodic=0.961
+10-30 01:36:53 [m2/lane4] done E1_rot_bigA_mlp_1024_0.03_0_2_b8cccfd5 in 0.09 h
+10-30 01:36:53 [m2/lane4] run E1_rot_bigA_mlp_1024_1.0_0_0_6a67fdc8 (P1, est 0.02 h, 12 GB)
+10-30 01:36:53 [m2/lane4] [E1_rot_bigA_mlp_1024_1.0_0_0_6a67fdc8] n=2000 P=813056 kernel=analytic device=cuda
+10-30 01:38:39 [m2/lane4] [E1_rot_bigA_mlp_1024_1.0_0_0_6a67fdc8] phase A: 16047 steps, L_A=0.0009, L_B=0.673, eta=2.979
+10-30 01:42:13 [m2/lane4] [E1_rot_bigA_mlp_1024_1.0_0_0_6a67fdc8] oracle: r_best=0.55 T_best=1210  r_lin=0.55 T_hat=1238 H=4952 M=123
+10-30 01:55:56 [m2/lane4] [E1_rot_bigA_mlp_1024_1.0_0_0_6a67fdc8] done in 1142.6 s; plin2=1.000, mpc_0.05=0.961, mpcpe_0.2=0.961, mpc2_0.05=0.874, trig_0.05=1.000, replan_only=0.961, periodic=0.961
+10-30 01:55:56 [m2/lane4] done E1_rot_bigA_mlp_1024_1.0_0_0_6a67fdc8 in 0.32 h
+10-30 01:55:56 [m2/lane4] run E1_rot_tolA02_mlp_1024_0.01_0_0_cd3b8a89 (P1, est 0.02 h, 12 GB)
+10-30 01:55:56 [m2/lane4] [E1_rot_tolA02_mlp_1024_0.01_0_0_cd3b8a89] n=2000 P=813056 kernel=analytic device=cuda
+10-30 01:56:05 [m2/lane4] [E1_rot_tolA02_mlp_1024_0.01_0_0_cd3b8a89] phase A: 270 steps, L_A=0.000892, L_B=0.641, eta=0.9923
+10-30 01:56:45 [m2/lane4] [E1_rot_tolA02_mlp_1024_0.01_0_0_cd3b8a89] oracle: r_best=0.55 T_best=214  r_lin=0.55 T_hat=163 H=1000 M=20
+10-30 02:00:10 [m2/lane4] [E1_rot_tolA02_mlp_1024_0.01_0_0_cd3b8a89] done in 254.1 s; plin2=1.000, mpc_0.05=0.972, mpcpe_0.2=0.972, mpc2_0.05=0.944, trig_0.05=0.986, replan_only=1.033, periodic=0.972
+10-30 02:00:10 [m2/lane4] done E1_rot_tolA02_mlp_1024_0.01_0_0_cd3b8a89 in 0.07 h
+10-30 02:00:10 [m2/lane4] run E1_rot_tolA02_mlp_1024_0.03_0_1_b378fd7d (P1, est 0.02 h, 12 GB)
+10-30 02:00:10 [m2/lane4] [E1_rot_tolA02_mlp_1024_0.03_0_1_b378fd7d] n=2000 P=813056 kernel=analytic device=cuda
+10-30 02:00:20 [m2/lane4] [E1_rot_tolA02_mlp_1024_0.03_0_1_b378fd7d] phase A: 521 steps, L_A=0.000896, L_B=0.624, eta=1.186
+10-30 02:01:23 [m2/lane4] [E1_rot_tolA02_mlp_1024_0.03_0_1_b378fd7d] oracle: r_best=0.55 T_best=357  r_lin=0.55 T_hat=342 H=1368 M=34
+10-30 02:05:55 [m2/lane4] [E1_rot_tolA02_mlp_1024_0.03_0_1_b378fd7d] done in 345.2 s; plin2=1.000, mpc_0.05=0.986, mpcpe_0.2=0.986, mpc2_0.05=0.880, trig_0.05=1.000, replan_only=0.986, periodic=0.986
+10-30 02:05:55 [m2/lane4] done E1_rot_tolA02_mlp_1024_0.03_0_1_b378fd7d in 0.10 h
+10-30 02:05:55 [m2/lane4] run E1_rot_tolA02_mlp_1024_0.3_0_2_58da43d0 (P1, est 0.02 h, 12 GB)
+10-30 02:05:55 [m2/lane4] [E1_rot_tolA02_mlp_1024_0.3_0_2_58da43d0] n=2000 P=813056 kernel=analytic device=cuda
+10-30 02:06:23 [m2/lane4] [E1_rot_tolA02_mlp_1024_0.3_0_2_58da43d0] phase A: 2990 steps, L_A=0.0009, L_B=0.637, eta=3.416
+10-30 02:10:11 [m2/lane4] [E1_rot_tolA02_mlp_1024_0.3_0_2_58da43d0] oracle: r_best=0.55 T_best=1091  r_lin=0.55 T_hat=1202 H=4808 M=120
+10-30 02:24:24 [m2/lane4] [E1_rot_tolA02_mlp_1024_0.3_0_2_58da43d0] done in 1109.2 s; plin2=1.000, mpc_0.05=0.973, mpcpe_0.2=0.973, mpc2_0.05=0.867, trig_0.05=1.000, replan_only=0.973, periodic=0.973
+10-30 02:24:24 [m2/lane4] done E1_rot_tolA02_mlp_1024_0.3_0_2_58da43d0 in 0.31 h
+10-30 02:24:24 [m2/lane4] run E1_rot_tolA06_mlp_1024_0.03_0_0_f4ab4ca2 (P1, est 0.02 h, 12 GB)
+10-30 02:24:25 [m2/lane4] [E1_rot_tolA06_mlp_1024_0.03_0_0_f4ab4ca2] n=2000 P=813056 kernel=analytic device=cuda
+10-30 02:24:33 [m2/lane4] [E1_rot_tolA06_mlp_1024_0.03_0_0_f4ab4ca2] phase A: 490 steps, L_A=0.000886, L_B=0.643, eta=1.272
+10-30 02:25:05 [m2/lane4] [E1_rot_tolA06_mlp_1024_0.03_0_0_f4ab4ca2] oracle: r_best=0.3 T_best=210  r_lin=0.3 T_hat=200 H=1000 M=20
+10-30 02:28:13 [m2/lane4] [E1_rot_tolA06_mlp_1024_0.03_0_0_f4ab4ca2] done in 228.4 s; plin2=1.000, mpc_0.05=1.000, mpcpe_0.2=1.000, mpc2_0.05=0.981, trig_0.05=1.000, replan_only=1.005, periodic=1.000
+10-30 02:28:13 [m2/lane4] done E1_rot_tolA06_mlp_1024_0.03_0_0_f4ab4ca2 in 0.06 h
+10-30 02:28:13 [m2/lane4] run E1_rot_tolA06_mlp_1024_0.3_0_1_a00bfbaf (P1, est 0.02 h, 12 GB)
+10-30 02:28:13 [m2/lane4] [E1_rot_tolA06_mlp_1024_0.3_0_1_a00bfbaf] n=2000 P=813056 kernel=analytic device=cuda
+10-30 02:28:36 [m2/lane4] [E1_rot_tolA06_mlp_1024_0.3_0_1_a00bfbaf] phase A: 3133 steps, L_A=0.0009, L_B=0.647, eta=3.273
+10-30 02:30:18 [m2/lane4] [E1_rot_tolA06_mlp_1024_0.3_0_1_a00bfbaf] oracle: r_best=0.3 T_best=602  r_lin=0.3 T_hat=641 H=2564 M=64
+10-30 02:40:26 [m2/lane4] [E1_rot_tolA06_mlp_1024_0.3_0_1_a00bfbaf] done in 732.9 s; plin2=1.000, mpc_0.05=1.000, mpcpe_0.2=1.000, mpc2_0.05=0.975, trig_0.05=1.000, replan_only=1.000, periodic=1.000
+10-30 02:40:26 [m2/lane4] done E1_rot_tolA06_mlp_1024_0.3_0_1_a00bfbaf in 0.20 h
+10-30 02:40:26 [m2/lane4] run E1_rot_sym_mlp_256_0.003_0_2_2087a397 (P1, est 0.01 h, 11 GB)
+10-30 02:40:26 [m2/lane4] [E1_rot_sym_mlp_256_0.003_0_2_2087a397] n=2000 P=203264 kernel=analytic device=cuda
+10-30 02:40:40 [m2/lane4] [E1_rot_sym_mlp_256_0.003_0_2_2087a397] phase A: 1176 steps, L_A=0.0009, L_B=0.672, eta=0.2623
+10-30 02:41:53 [m2/lane4] [E1_rot_sym_mlp_256_0.003_0_2_2087a397] oracle: r_best=0.3 T_best=442  r_lin=0.4 T_hat=389 H=1556 M=38
+10-30 02:47:59 [m2/lane4] [E1_rot_sym_mlp_256_0.003_0_2_2087a397] done in 453.6 s; plin2=1.124, mpc_0.05=0.959, mpcpe_0.2=0.959, mpc2_0.05=0.864, trig_0.05=0.959, replan_only=1.036, periodic=0.959
+10-30 02:47:59 [m2/lane4] done E1_rot_sym_mlp_256_0.003_0_2_2087a397 in 0.13 h
+10-30 02:47:59 [m2/lane4] run E1_rot_sym_mlp_256_0.03_0_2_b784a7ed (P1, est 0.01 h, 11 GB)
+10-30 02:48:00 [m2/lane4] [E1_rot_sym_mlp_256_0.03_0_2_b784a7ed] n=2000 P=203264 kernel=analytic device=cuda
+10-30 02:48:08 [m2/lane4] [E1_rot_sym_mlp_256_0.03_0_2_b784a7ed] phase A: 487 steps, L_A=0.000899, L_B=0.642, eta=0.9888
+10-30 02:49:06 [m2/lane4] [E1_rot_sym_mlp_256_0.03_0_2_b784a7ed] oracle: r_best=0.5 T_best=314  r_lin=0.5 T_hat=376 H=1504 M=37
+10-30 02:53:16 [m2/lane4] [E1_rot_sym_mlp_256_0.03_0_2_b784a7ed] done in 316.2 s; plin2=1.000, mpc_0.05=0.959, mpcpe_0.2=0.959, mpc2_0.05=0.876, trig_0.05=0.962, replan_only=1.064, periodic=0.959
+10-30 02:53:16 [m2/lane4] done E1_rot_sym_mlp_256_0.03_0_2_b784a7ed in 0.09 h
+10-30 02:53:16 [m2/lane4] run E1_rot_sym_mlp_256_1.0_0_2_bfa3cc9a (P1, est 0.01 h, 11 GB)
+10-30 02:53:16 [m2/lane4] [E1_rot_sym_mlp_256_1.0_0_2_bfa3cc9a] n=2000 P=203264 kernel=analytic device=cuda
+10-30 02:54:27 [m2/lane4] [E1_rot_sym_mlp_256_1.0_0_2_bfa3cc9a] phase A: 9269 steps, L_A=0.0009, L_B=0.722, eta=4.32
+10-30 03:00:14 [m2/lane4] [E1_rot_sym_mlp_256_1.0_0_2_bfa3cc9a] oracle: r_best=0.55 T_best=2252  r_lin=0.55 T_hat=2335 H=9340 M=233
+10-30 03:26:58 [m2/lane4] [E1_rot_sym_mlp_256_1.0_0_2_bfa3cc9a] done in 2022.2 s; plin2=1.000, mpc_0.05=0.932, mpcpe_0.2=0.933, mpc2_0.05=0.854, trig_0.05=1.000, replan_only=0.941, periodic=0.933
+10-30 03:26:58 [m2/lane4] done E1_rot_sym_mlp_256_1.0_0_2_bfa3cc9a in 0.56 h
+10-30 03:26:58 [m2/lane4] run E1_perm_sym_mlp_256_0.3_0_0_e18cafc1 (P1, est 0.01 h, 11 GB)
+10-30 03:26:58 [m2/lane4] [E1_perm_sym_mlp_256_0.3_0_0_e18cafc1] n=2000 P=203264 kernel=analytic device=cuda
+10-30 03:27:46 [m2/lane4] [E1_perm_sym_mlp_256_0.3_0_0_e18cafc1] phase A: 7238 steps, L_A=0.0009, L_B=0.673, eta=1.139
+10-30 03:31:13 [m2/lane4] [E1_perm_sym_mlp_256_0.3_0_0_e18cafc1] oracle: r_best=0.15 T_best=1054  r_lin=0.15 T_hat=1200 H=4800 M=120
+10-30 03:46:52 [m2/lane4] [E1_perm_sym_mlp_256_0.3_0_0_e18cafc1] done in 1193.6 s; plin2=1.000, mpc_0.05=1.000, mpcpe_0.2=1.000, mpc2_0.05=0.984, trig_0.05=1.000, replan_only=1.000, periodic=1.000
+10-30 03:46:52 [m2/lane4] done E1_perm_sym_mlp_256_0.3_0_0_e18cafc1 in 0.33 h
+10-30 03:46:52 [m2/lane4] run E1N_B500_mlp_1024_1.0_500_0_a2c83cfb (P1, est 0.01 h, 8 GB)
+10-30 03:46:52 [m2/lane4] [E1N_B500_mlp_1024_1.0_500_0_a2c83cfb] n=2000 P=813056 kernel=analytic device=cuda
+10-30 03:47:35 [m2/lane4] [E1N_B500_mlp_1024_1.0_500_0_a2c83cfb] phase A: 5359 steps, L_A=0.0009, L_B=0.659, eta=5.401
+10-30 03:49:39 [m2/lane4] [E1N_B500_mlp_1024_1.0_500_0_a2c83cfb] oracle: r_best=0.5 T_best=1195  r_lin=0.5 T_hat=1226 H=4904 M=125
+10-30 03:50:44 [m2/lane4] [E1N_B500_mlp_1024_1.0_500_0_a2c83cfb] done in 232.0 s; plin2=1.000, mpc_0.05=0.971, mpcpe_0.2=0.983
+10-30 03:50:44 [m2/lane4] done E1N_B500_mlp_1024_1.0_500_0_a2c83cfb in 0.06 h
+10-30 03:50:44 [m2/lane4] run E1N_B500_mlp_1024_1.0_500_3_923db8c8 (P1, est 0.01 h, 8 GB)
+10-30 03:50:44 [m2/lane4] [E1N_B500_mlp_1024_1.0_500_3_923db8c8] n=2000 P=813056 kernel=analytic device=cuda
+10-30 03:51:36 [m2/lane4] [E1N_B500_mlp_1024_1.0_500_3_923db8c8] phase A: 5504 steps, L_A=0.0009, L_B=0.669, eta=5.434
+10-30 03:53:21 [m2/lane4] [E1N_B500_mlp_1024_1.0_500_3_923db8c8] oracle: r_best=0.45 T_best=1110  r_lin=0.5 T_hat=1130 H=4520 M=115
+10-30 03:54:09 [m2/lane4] [E1N_B500_mlp_1024_1.0_500_3_923db8c8] done in 205.7 s; plin2=1.005, mpc_0.05=0.964, mpcpe_0.2=1.050
+10-30 03:54:09 [m2/lane4] done E1N_B500_mlp_1024_1.0_500_3_923db8c8 in 0.06 h
+10-30 03:54:09 [m2/lane4] run E1N_B128_mlp_1024_1.0_128_2_8293b857 (P1, est 0.01 h, 8 GB)
+10-30 03:54:10 [m2/lane4] [E1N_B128_mlp_1024_1.0_128_2_8293b857] n=2000 P=813056 kernel=analytic device=cuda
+10-30 03:54:53 [m2/lane4] [E1N_B128_mlp_1024_1.0_128_2_8293b857] phase A: 5385 steps, L_A=0.0009, L_B=0.648, eta=5.545
+10-30 03:56:34 [m2/lane4] [E1N_B128_mlp_1024_1.0_128_2_8293b857] oracle: r_best=0.45 T_best=1170  r_lin=0.45 T_hat=1206 H=4824 M=120
+10-30 03:57:24 [m2/lane4] [E1N_B128_mlp_1024_1.0_128_2_8293b857] done in 194.7 s; plin2=1.000, mpc_0.05=0.979, mpcpe_0.2=0.979
+10-30 03:57:24 [m2/lane4] done E1N_B128_mlp_1024_1.0_128_2_8293b857 in 0.05 h
+10-30 03:57:24 [m2/lane4] run E1N_B32_mlp_1024_1.0_32_1_87fa76f5 (P1, est 0.01 h, 8 GB)
+10-30 03:57:24 [m2/lane4] [E1N_B32_mlp_1024_1.0_32_1_87fa76f5] n=2000 P=813056 kernel=analytic device=cuda
+10-30 03:58:10 [m2/lane4] [E1N_B32_mlp_1024_1.0_32_1_87fa76f5] phase A: 5701 steps, L_A=0.0009, L_B=0.661, eta=5.226
+10-30 03:59:50 [m2/lane4] [E1N_B32_mlp_1024_1.0_32_1_87fa76f5] oracle: r_best=0.5 T_best=1210  r_lin=0.5 T_hat=1138 H=4552 M=115
+10-30 04:00:52 [m2/lane4] [E1N_B32_mlp_1024_1.0_32_1_87fa76f5] done in 207.7 s; plin2=1.000, mpc_0.05=1.050, mpcpe_0.2=1.050
+10-30 04:00:52 [m2/lane4] done E1N_B32_mlp_1024_1.0_32_1_87fa76f5 in 0.06 h
+10-30 04:00:52 [m2/lane4] run E1N_B500_mlp_1024_0.03_500_4_8a6ca4ce (P1, est 0.01 h, 8 GB)
+10-30 04:00:52 [m2/lane4] [E1N_B500_mlp_1024_0.03_500_4_8a6ca4ce] n=2000 P=813056 kernel=analytic device=cuda
+10-30 04:01:05 [m2/lane4] [E1N_B500_mlp_1024_0.03_500_4_8a6ca4ce] phase A: 494 steps, L_A=0.000893, L_B=0.631, eta=1.237
+10-30 04:01:34 [m2/lane4] [E1N_B500_mlp_1024_0.03_500_4_8a6ca4ce] oracle: r_best=0.45 T_best=285  r_lin=0.45 T_hat=266 H=1064 M=30
+10-30 04:01:49 [m2/lane4] [E1N_B500_mlp_1024_0.03_500_4_8a6ca4ce] done in 57.0 s; plin2=1.000, mpc_0.05=1.000, mpcpe_0.2=1.000
+10-30 04:01:49 [m2/lane4] done E1N_B500_mlp_1024_0.03_500_4_8a6ca4ce in 0.02 h
+10-30 04:01:49 [m2/lane4] run E1N_B128_mlp_1024_0.03_128_3_bf6b8b24 (P1, est 0.01 h, 8 GB)
+10-30 04:01:49 [m2/lane4] [E1N_B128_mlp_1024_0.03_128_3_bf6b8b24] n=2000 P=813056 kernel=analytic device=cuda
+10-30 04:02:00 [m2/lane4] [E1N_B128_mlp_1024_0.03_128_3_bf6b8b24] phase A: 493 steps, L_A=0.000899, L_B=0.663, eta=1.246
+10-30 04:02:26 [m2/lane4] [E1N_B128_mlp_1024_0.03_128_3_bf6b8b24] oracle: r_best=0.45 T_best=285  r_lin=0.45 T_hat=252 H=1008 M=25
+10-30 04:02:46 [m2/lane4] [E1N_B128_mlp_1024_0.03_128_3_bf6b8b24] done in 57.4 s; plin2=1.000, mpc_0.05=1.018, mpcpe_0.2=1.000
+10-30 04:02:46 [m2/lane4] done E1N_B128_mlp_1024_0.03_128_3_bf6b8b24 in 0.02 h
+10-30 04:02:46 [m2/lane4] run E1N_B32_mlp_1024_0.03_32_2_286d2de9 (P1, est 0.01 h, 8 GB)
+10-30 04:02:47 [m2/lane4] [E1N_B32_mlp_1024_0.03_32_2_286d2de9] n=2000 P=813056 kernel=analytic device=cuda
+10-30 04:02:58 [m2/lane4] [E1N_B32_mlp_1024_0.03_32_2_286d2de9] phase A: 509 steps, L_A=0.000899, L_B=0.62, eta=1.267
+10-30 04:03:24 [m2/lane4] [E1N_B32_mlp_1024_0.03_32_2_286d2de9] oracle: r_best=0.45 T_best=370  r_lin=0.45 T_hat=284 H=1136 M=30
+10-30 04:03:42 [m2/lane4] [E1N_B32_mlp_1024_0.03_32_2_286d2de9] done in 55.9 s; plin2=1.000, mpc_0.05=0.959, mpcpe_0.2=0.986
+10-30 04:03:42 [m2/lane4] done E1N_B32_mlp_1024_0.03_32_2_286d2de9 in 0.02 h
+10-30 04:03:42 [m2/lane4] run E1W_tight_mlp_8_10.0_0_1_456ded3f (P2, est 0.00 h, 5 GB)
+10-30 04:03:42 [m2/lane4] [E1W_tight_mlp_8_10.0_0_1_456ded3f] n=2000 P=6352 kernel=analytic device=cuda
+10-30 04:05:34 [m2/lane4] [E1W_tight_mlp_8_10.0_0_1_456ded3f] phase A: 19999 steps, L_A=0.193, L_B=0.859, eta=2.829
+10-30 04:48:13 [m2/lane4] [E1W_tight_mlp_8_10.0_0_1_456ded3f] oracle: r_best=None T_best=None  r_lin=0.05 T_hat=None H=100000 M=10000
+10-30 04:48:15 [m2/lane4] [E1W_tight_mlp_8_10.0_0_1_456ded3f] done in 2672.5 s; 
+10-30 04:48:15 [m2/lane4] done E1W_tight_mlp_8_10.0_0_1_456ded3f in 0.74 h
+10-30 04:48:15 [m2/lane4] run E1W_tight_mlp_16_10.0_0_1_65102d85 (P2, est 0.00 h, 5 GB)
+10-30 04:48:15 [m2/lane4] [E1W_tight_mlp_16_10.0_0_1_65102d85] n=2000 P=12704 kernel=analytic device=cuda
+10-30 04:50:24 [m2/lane4] [E1W_tight_mlp_16_10.0_0_1_65102d85] phase A: 19999 steps, L_A=0.101, L_B=1.05, eta=3.446
+10-30 05:33:02 [m2/lane4] [E1W_tight_mlp_16_10.0_0_1_65102d85] oracle: r_best=None T_best=None  r_lin=0.1 T_hat=None H=100000 M=10000
+10-30 05:33:04 [m2/lane4] [E1W_tight_mlp_16_10.0_0_1_65102d85] done in 2689.0 s; 
+10-30 05:33:04 [m2/lane4] done E1W_tight_mlp_16_10.0_0_1_65102d85 in 0.75 h
+10-30 05:33:04 [m2/lane4] run E1W_tight_mlp_28_10.0_0_0_f3df51cf (P2, est 0.00 h, 5 GB)
+10-30 05:33:04 [m2/lane4] [E1W_tight_mlp_28_10.0_0_0_f3df51cf] n=2000 P=22232 kernel=analytic device=cuda
+10-30 05:35:47 [m2/lane4] [E1W_tight_mlp_28_10.0_0_0_f3df51cf] phase A: 19999 steps, L_A=0.0492, L_B=0.908, eta=3.737
+10-30 06:10:53 [m2/lane4] [E1W_tight_mlp_28_10.0_0_0_f3df51cf] oracle: r_best=None T_best=None  r_lin=0.2 T_hat=None H=100000 M=10000
+10-30 06:10:54 [m2/lane4] [E1W_tight_mlp_28_10.0_0_0_f3df51cf] done in 2269.7 s; 
+10-30 06:10:54 [m2/lane4] done E1W_tight_mlp_28_10.0_0_0_f3df51cf in 0.63 h
+10-30 06:10:54 [m2/lane4] run E1W_tight_mlp_40_10.0_0_0_e3bde566 (P2, est 0.00 h, 5 GB)
+10-30 06:10:54 [m2/lane4] [E1W_tight_mlp_40_10.0_0_0_e3bde566] n=2000 P=31760 kernel=analytic device=cuda
+10-30 06:12:44 [m2/lane4] [E1W_tight_mlp_40_10.0_0_0_e3bde566] phase A: 19999 steps, L_A=0.0299, L_B=0.949, eta=4.418
+10-30 06:43:13 [m2/lane4] [E1W_tight_mlp_40_10.0_0_0_e3bde566] oracle: r_best=None T_best=None  r_lin=0.35 T_hat=None H=100000 M=10000
+10-30 06:43:15 [m2/lane4] [E1W_tight_mlp_40_10.0_0_0_e3bde566] done in 1941.4 s; 
+10-30 06:43:15 [m2/lane4] done E1W_tight_mlp_40_10.0_0_0_e3bde566 in 0.54 h
+10-30 06:43:15 [m2/lane4] run E1W_tight_mlp_64_10.0_0_0_f9d1202b (P2, est 0.00 h, 5 GB)
+10-30 06:43:15 [m2/lane4] [E1W_tight_mlp_64_10.0_0_0_f9d1202b] n=2000 P=50816 kernel=analytic device=cuda
+10-30 06:46:04 [m2/lane4] [E1W_tight_mlp_64_10.0_0_0_f9d1202b] phase A: 19999 steps, L_A=0.014, L_B=0.883, eta=4.518
+10-30 07:26:48 [m2/lane4] [E1W_tight_mlp_64_10.0_0_0_f9d1202b] oracle: r_best=None T_best=None  r_lin=0.45 T_hat=None H=100000 M=10000
+10-30 07:26:51 [m2/lane4] [E1W_tight_mlp_64_10.0_0_0_f9d1202b] done in 2615.6 s; 
+10-30 07:26:51 [m2/lane4] done E1W_tight_mlp_64_10.0_0_0_f9d1202b in 0.73 h
+10-30 07:26:51 [m2/lane4] run E1W_tight_mlp_256_10.0_0_0_8484ccd4 (P2, est 0.00 h, 5 GB)
+10-30 07:26:51 [m2/lane4] [E1W_tight_mlp_256_10.0_0_0_8484ccd4] n=2000 P=203264 kernel=analytic device=cuda
+10-30 07:29:21 [m2/lane4] [E1W_tight_mlp_256_10.0_0_0_8484ccd4] phase A: 16000 steps, L_A=0.0009, L_B=0.768, eta=5.255
+10-30 07:55:13 [m2/lane4] [E1W_tight_mlp_256_10.0_0_0_8484ccd4] oracle: r_best=0.5 T_best=15654  r_lin=0.5 T_hat=15726 H=62904 M=1572
+10-30 07:55:15 [m2/lane4] [E1W_tight_mlp_256_10.0_0_0_8484ccd4] done in 1703.4 s; plin2=1.000
+10-30 07:55:15 [m2/lane4] done E1W_tight_mlp_256_10.0_0_0_8484ccd4 in 0.47 h
+10-30 07:55:15 [m2/lane4] run E1W_tight_mlp_256_10.0_0_2_2ae73c96 (P2, est 0.00 h, 5 GB)
+10-30 07:55:15 [m2/lane4] [E1W_tight_mlp_256_10.0_0_2_2ae73c96] n=2000 P=203264 kernel=analytic device=cuda
+10-30 07:56:45 [m2/lane4] [E1W_tight_mlp_256_10.0_0_2_2ae73c96] phase A: 16938 steps, L_A=0.0009, L_B=0.738, eta=5.55
+10-30 08:19:12 [m2/lane4] [E1W_tight_mlp_256_10.0_0_2_2ae73c96] oracle: r_best=0.5 T_best=14871  r_lin=0.5 T_hat=14987 H=59948 M=1498
+10-30 08:19:14 [m2/lane4] [E1W_tight_mlp_256_10.0_0_2_2ae73c96] done in 1439.1 s; plin2=1.000
+10-30 08:19:14 [m2/lane4] done E1W_tight_mlp_256_10.0_0_2_2ae73c96 in 0.40 h
+10-30 08:19:14 [m2/lane4] queue empty for this lane (only jobs <= 113.84 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 08:49:14 [m2/lane4] queue empty for this lane (only jobs <= 113.59 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 09:19:14 [m2/lane4] queue empty for this lane (only jobs <= 113.34 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 09:49:15 [m2/lane4] queue empty for this lane (only jobs <= 113.09 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 10:19:15 [m2/lane4] queue empty for this lane (only jobs <= 112.84 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 10:49:15 [m2/lane4] queue empty for this lane (only jobs <= 112.59 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 11:19:16 [m2/lane4] queue empty for this lane (only jobs <= 112.34 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 11:49:16 [m2/lane4] queue empty for this lane (only jobs <= 112.09 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 12:19:16 [m2/lane4] queue empty for this lane (only jobs <= 111.84 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 12:49:17 [m2/lane4] queue empty for this lane (only jobs <= 111.59 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 13:19:17 [m2/lane4] queue empty for this lane (only jobs <= 111.34 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 13:49:17 [m2/lane4] queue empty for this lane (only jobs <= 111.09 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 14:19:18 [m2/lane4] queue empty for this lane (only jobs <= 110.84 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 14:49:18 [m2/lane4] queue empty for this lane (only jobs <= 110.59 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 15:19:18 [m2/lane4] queue empty for this lane (only jobs <= 110.34 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 15:49:19 [m2/lane4] queue empty for this lane (only jobs <= 110.09 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 16:19:19 [m2/lane4] queue empty for this lane (only jobs <= 109.84 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 16:49:20 [m2/lane4] queue empty for this lane (only jobs <= 109.59 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 17:19:20 [m2/lane4] queue empty for this lane (only jobs <= 109.34 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 17:49:20 [m2/lane4] queue empty for this lane (only jobs <= 109.09 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 18:19:21 [m2/lane4] queue empty for this lane (only jobs <= 108.84 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
