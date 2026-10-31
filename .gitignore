@@ -5,3 +5,6 @@ results/summary/
 results/figures/
 STOP
 *.tmp.*
+# Machine-local worker state must never travel from m1 to m2 through git.
+results/_claims/
+results/_logs/

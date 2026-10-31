@@ -1,0 +1,26 @@
+--- a/rmpc/ntk.py
++++ b/rmpc/ntk.py
+@@ -88,13 +88,20 @@
+     if J.dtype == out_dtype:
+         return J @ J.T
+     N = J.shape[0]
++    # Limit each temporary dtype-converted tile to 4 GiB. The default 4096 rows
++    # can otherwise allocate >80 GiB for the ResNet18-k64 pseudo-NTK.
++    bytes_per_row = J.shape[1] * torch.empty((), dtype=out_dtype).element_size()
++    block = min(block, max(1, (4 * 1024**3) // bytes_per_row))
+     K = torch.empty(N, N, dtype=out_dtype, device=J.device)
+     for i in range(0, N, block):
+         Ji = J[i:i + block].to(out_dtype)
+-        for j in range(0, N, block):
+-            K[i:i + block, j:j + block] = Ji @ J[j:j + block].to(out_dtype).T
++        for j in range(i, N, block):
++            Jj = Ji if i == j else J[j:j + block].to(out_dtype)
++            tile = Ji @ Jj.T
++            K[i:i + block, j:j + block] = tile
++            if i != j:
++                K[j:j + block, i:i + block] = tile.T
+     return K
+-
+ 
+ @torch.no_grad()
+ def _analytic(model, params, X):
