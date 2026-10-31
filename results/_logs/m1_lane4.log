@@ -222,3 +222,24 @@ ValueError: Invalid isoformat string: '2026-XX-XXTHH:MM'
 10-30 09:01:19 [m1/lane4] queue empty for this lane (only jobs <= 3.24 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
 10-30 09:31:19 [m1/lane4] queue empty for this lane (only jobs <= 2.99 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
 10-30 10:01:20 [m1/lane4] queue empty for this lane (only jobs <= 2.74 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 10:31:20 [m1/lane4] queue empty for this lane (only jobs <= 2.49 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 20:39:07 [m1/lane4] start device=cuda mem<=80.0 GB priorities=['P3'] exp=all deadline=2026-10-31T18:30 slowdown=2.0
+10-30 20:39:07 [m1/lane4] run E2_rot90_n2000_pntk_resnet18k_64_50.0_0_2_5a7cd8bc (P3, est 7.75 h, 61 GB)
+10-30 20:39:08 [m1/lane4] [E2_rot90_n2000_pntk_resnet18k_64_50.0_0_2_5a7cd8bc] n=2000 P=11172160 kernel=pntk device=cuda
+/work/ATDL_2/venvs/rmpc/lib/python3.13/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+10-30 20:39:31 [m1/lane4] [E2_rot90_n2000_pntk_resnet18k_64_50.0_0_2_5a7cd8bc] phase A: 41 steps, L_A=0.00413, L_B=0.482, eta=0.01827
+10-30 21:52:41 [m1/lane4] [E2_rot90_n2000_pntk_resnet18k_64_50.0_0_2_5a7cd8bc] oracle: r_best=0.3 T_best=156  r_lin=0.2 T_hat=112 H=1000 M=20
+10-30 21:58:24 [m1/lane4] [E2_rot90_n2000_pntk_resnet18k_64_50.0_0_2_5a7cd8bc] done in 4757.4 s; plin2=1.487, mpc_0.05=0.936, mpcpe_0.2=0.936, trig_0.05=1.487, replan_only=0.936
+10-30 21:58:24 [m1/lane4] done E2_rot90_n2000_pntk_resnet18k_64_50.0_0_2_5a7cd8bc in 1.32 h
+10-30 21:58:24 [m1/lane4] queue empty for this lane (only jobs <= 10.26 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 22:28:25 [m1/lane4] queue empty for this lane (only jobs <= 10.01 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 22:58:25 [m1/lane4] queue empty for this lane (only jobs <= 9.76 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 23:28:25 [m1/lane4] queue empty for this lane (only jobs <= 9.51 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-30 23:58:26 [m1/lane4] queue empty for this lane (only jobs <= 9.26 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-31 00:28:26 [m1/lane4] queue empty for this lane (only jobs <= 9.01 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-31 00:58:27 [m1/lane4] queue empty for this lane (only jobs <= 8.76 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-31 01:28:27 [m1/lane4] queue empty for this lane (only jobs <= 8.51 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-31 01:58:27 [m1/lane4] queue empty for this lane (only jobs <= 8.26 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-31 02:28:28 [m1/lane4] queue empty for this lane (only jobs <= 8.01 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
+10-31 02:58:28 [m1/lane4] queue empty for this lane (only jobs <= 7.76 est. h still fit before the deadline); waiting (add jobs with make_jobs.py, or stop with stop_workers.sh)
