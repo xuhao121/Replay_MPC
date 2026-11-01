@@ -1,0 +1,63 @@
+[
+ {
+  "id": "H1",
+  "test": "P_lin2: lazy gmean regret CI upper <= 1.05 and offset <= 1 step in >= 90% of jobs; rich median Spearman(T, T_lin) >= 0.9 and offset <= 2 steps in >= 80%  |  reject: lazy CI upper > 1.10 or offset > 2 steps in > 50% of rich jobs",
+  "value": "lazy gmean 1.159 [1.054, 1.283], offset<=1 88% (41 jobs); rich Spearman 0.989, offset<=2 93%, >2 7% (43 jobs)",
+  "verdict": "reject",
+  "passed": false
+ },
+ {
+  "id": "H2a",
+  "test": "mpc_0.05: gmean regret CI upper <= 1.02 and worst setting <= 1.10  |  reject: CI lower > 1.05",
+  "value": "gmean 0.978 [0.966, 0.990], worst setting 1.018",
+  "verdict": "support",
+  "passed": true
+ },
+ {
+  "id": "H2b",
+  "test": "rich: T(mpc_0.05) < T(P_lin2)  [Wilcoxon one-sided]  |  reject: significant the other way",
+  "value": "gmean ratio 0.882, n=11 settings",
+  "verdict": "support",
+  "passed": true,
+  "p": 0.00048828125,
+  "p_opp": 1.0,
+  "confirmatory": true,
+  "p_holm": null
+ },
+ {
+  "id": "H2c",
+  "test": "rich: T(replan_only) > T(mpc_0.05)  [Wilcoxon one-sided]  |  reject: significant the other way",
+  "value": "gmean ratio 1.014, n=11 settings",
+  "verdict": "support",
+  "passed": true,
+  "p": 0.0185546875,
+  "p_opp": 0.986328125,
+  "confirmatory": true,
+  "p_holm": null
+ },
+ {
+  "id": "H2d",
+  "test": "all: T(mpc_0.05) < T(trig_0.05)  [Wilcoxon one-sided]  |  reject: significant the other way",
+  "value": "gmean ratio 0.898, n=20 settings",
+  "verdict": "support",
+  "passed": true,
+  "p": 6.591694449141665e-05,
+  "p_opp": 0.9999340830555086,
+  "confirmatory": true,
+  "p_holm": null
+ },
+ {
+  "id": "H2f",
+  "test": "mpcpe_0.2 vs mpc_0.05: 90% CI of gmean T ratio inside [0.97, 1.03]  |  reject: CI excludes 1 and the ratio is off by > 5%",
+  "value": "1.002 [0.998, 1.008], n=20 settings",
+  "verdict": "support",
+  "passed": true
+ },
+ {
+  "id": "H5",
+  "test": "valley (T <= 1.2 T*) spread of task-B test accuracy: lazy median <= 1 point and below rich  |  reject: lazy median > 2 points",
+  "value": "lazy 0.004 vs rich 0.005",
+  "verdict": "support",
+  "passed": true
+ }
+]

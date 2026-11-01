@@ -1,0 +1,89 @@
+[
+ {
+  "id": "H1",
+  "test": "P_lin2: lazy gmean regret CI upper <= 1.05 and offset <= 1 step in >= 90% of jobs; rich median Spearman(T, T_lin) >= 0.9 and offset <= 2 steps in >= 80%  |  reject: lazy CI upper > 1.10 or offset > 2 steps in > 50% of rich jobs",
+  "value": "lazy gmean 1.041 [1.016, 1.073], offset<=1 94% (194 jobs); rich Spearman 0.986, offset<=2 96%, >2 4% (160 jobs)",
+  "verdict": "inconclusive",
+  "passed": false
+ },
+ {
+  "id": "H2a",
+  "test": "mpc_0.05: gmean regret CI upper <= 1.02 and worst setting <= 1.10  |  reject: CI lower > 1.05",
+  "value": "gmean 0.981 [0.977, 0.985], worst setting 1.018",
+  "verdict": "support",
+  "passed": true
+ },
+ {
+  "id": "H2b",
+  "test": "rich: T(mpc_0.05) < T(P_lin2)  [Wilcoxon one-sided, Holm]  |  reject: significant the other way",
+  "value": "gmean ratio 0.920, n=41 settings",
+  "verdict": "support",
+  "passed": true,
+  "p": 3.869866231648982e-08,
+  "p_opp": 0.9999999613013377,
+  "confirmatory": true,
+  "p_holm": 7.739732463297963e-08
+ },
+ {
+  "id": "H2c",
+  "test": "rich: T(replan_only) > T(mpc_0.05)  [Wilcoxon one-sided, Holm]  |  reject: significant the other way",
+  "value": "gmean ratio 1.036, n=41 settings",
+  "verdict": "support",
+  "passed": true,
+  "p": 2.4180237517865673e-06,
+  "p_opp": 0.9999975819762482,
+  "confirmatory": true,
+  "p_holm": 2.4180237517865673e-06
+ },
+ {
+  "id": "H2d",
+  "test": "all: T(mpc_0.05) < T(trig_0.05)  [Wilcoxon one-sided, Holm]  |  reject: significant the other way",
+  "value": "gmean ratio 0.968, n=85 settings",
+  "verdict": "support",
+  "passed": true,
+  "p": 8.20474233813614e-13,
+  "p_opp": 0.9999999999991795,
+  "confirmatory": true,
+  "p_holm": 3.281896935254456e-12
+ },
+ {
+  "id": "H3",
+  "test": "lazy: gmean T(mpc2_0.05) / T(mpc_0.05) <= 0.97 [Wilcoxon, Holm] and first two-phase plan low->high in >= 70%  |  reject: ratio >= 1.0",
+  "value": "gmean ratio 0.931, n=37 settings, low->high 100%",
+  "verdict": "support",
+  "passed": true,
+  "p": 7.275957614183426e-12,
+  "p_opp": null,
+  "confirmatory": true,
+  "extra_ok": true,
+  "p_holm": 2.1827872842550278e-11
+ },
+ {
+  "id": "H2f",
+  "test": "mpcpe_0.2 vs mpc_0.05: 90% CI of gmean T ratio inside [0.97, 1.03]  |  reject: CI excludes 1 and the ratio is off by > 5%",
+  "value": "1.001 [0.999, 1.002], n=85 settings",
+  "verdict": "support",
+  "passed": true
+ },
+ {
+  "id": "H5",
+  "test": "valley (T <= 1.2 T*) spread of task-B test accuracy: lazy median <= 1 point and below rich  |  reject: lazy median > 2 points",
+  "value": "lazy 0.004 vs rich 0.006",
+  "verdict": "support",
+  "passed": true
+ },
+ {
+  "id": "H6a",
+  "test": "width sweep (tight band): T* peaks at h in [16, 40]; P_lin2 regret <= 1.05 at every width  |  reject: peak at h >= 64 or no peak (largest at the narrowest width)",
+  "value": "T* largest at h=128 among widths reaching the band (unreached: [8, 12, 16, 20, 24, 28, 32, 40, 48, 64]); P_lin2 regret median 1.000, max 1.000",
+  "verdict": "reject",
+  "passed": false
+ },
+ {
+  "id": "H6b",
+  "test": "SGD noise: r* increases with 1/B (Spearman > 0); mpc_0.05 regret median <= 1.05  |  reject: Spearman < 0",
+  "value": "Spearman(1/B, r*) 0.267; mpc_0.05 median 0.975",
+  "verdict": "support",
+  "passed": true
+ }
+]

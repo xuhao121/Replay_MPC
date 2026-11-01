@@ -5,7 +5,8 @@ Figures
   fig1_curves      T(r): real training vs linearised prediction, a lazy and a rich configuration (E1, E2)
   fig2_regret      regret vs kernel drift, one panel per method (P_lin2, MPC, trigger only, stale kernel)
   fig3_cost        re-linearisations per run and wall-clock regret (kernels and plans included) vs drift
-  fig4_traces      r(t) of the online controllers and the losses, one rich configuration
+  fig4_traces      r(t) of mpc_0.05 / replan_only and the losses in the richest E1 job, plus r(t) of mpc_0.05 /
+                   mpc2_0.05 and the first two-phase plan in a typical lazy E1 job (plan shape, H3)
   fig5_gradstat    appendix: gradient-statistics rules vs the best fixed r, each at its own tuned step size
                    (E0, e0/results/sim2.json; no GPU results needed)
   fig6_width       E1W: best time-to-joint T* and test accuracy vs width (interpolation threshold)
@@ -13,6 +14,7 @@ Figures
 """
 import argparse, json, os, sys
 import numpy as np
+import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -29,9 +31,24 @@ plt.rcParams.update({'font.size': 9, 'axes.edgecolor': INK2, 'axes.labelcolor': 
 def save(fig, out, name):
     fig.tight_layout()
     for ext in ('png', 'pdf'):
-        fig.savefig(os.path.join(out, f'{name}.{ext}'))
+        fig.savefig(os.path.join(out, f'{name}.{ext}'), bbox_inches='tight')    # keeps figure-level legends
     plt.close(fig)
     print('wrote', name)
+
+
+def _drift(d):
+    return d['drift'].get('full_best', d['drift'].get('sub_best'))
+
+
+def _legend_below(fig, axes, ncol):
+    """One legend under the panels, collected from every panel (first occurrence of each label)."""
+    seen = {}
+    for ax in axes:
+        for h, l in zip(*ax.get_legend_handles_labels()):
+            seen.setdefault(l, h)
+    if seen:
+        fig.legend(list(seen.values()), list(seen.keys()), loc='upper center', bbox_to_anchor=(0.5, 0.0),
+                   ncol=ncol, fontsize=7)
 
 
 def _curve(d):
@@ -47,24 +64,28 @@ def fig1(jobs, out):
         js = [d for d in jobs if d['cfg']['exp'] == exp and d.get('drift') and d['oracle']['T_best']]
         if not js:
             continue
-        dr = lambda d: d['drift'].get('full_best', d['drift'].get('sub_best'))
-        js.sort(key=dr)
+        js.sort(key=_drift)
         picks += [(exp, 'lazy', js[0]), (exp, 'rich', js[-1])]
     if not picks:
         return
-    fig, axes = plt.subplots(1, len(picks), figsize=(3.0 * len(picks), 2.8), squeeze=False)
+    fig, axes = plt.subplots(1, len(picks), figsize=(3.0 * len(picks), 2.9), squeeze=False)
     for ax, (exp, lab, d) in zip(axes[0], picks):
         r, T, L = _curve(d)
         ax.plot(r, T, 'o-', color=C[0], ms=4, label='real training')
         ax.plot(r, L, 's--', color=C[1], ms=4, label='linearised at θ_A')
-        ax.axvline(d['oracle']['r_best'], color=C[0], lw=1, alpha=0.5)
-        ax.axvline(d['r_lin'], color=C[1], lw=1, ls=':', alpha=0.8)
-        dr = d['drift'].get('full_best', d['drift'].get('sub_best'))
-        ax.set_title(f"{exp} {d['cfg']['tag']}  α={d['cfg']['alpha']:g}  drift {dr:.2f}", fontsize=8, color=INK)
+        miss = ~np.isfinite(T)                    # fixed r that never reached the band within H
+        if miss.any():
+            ax.scatter(r[miss], np.full(int(miss.sum()), float(d['H'])), marker='x', color=C[0], s=22,
+                       linewidths=1.2, zorder=3, label='real: not in band within H')
+        ax.axvline(d['oracle']['r_best'], color=C[0], lw=1, alpha=0.5, label='r* (best fixed r)')
+        ax.axvline(d['r_lin'], color=C[1], lw=1, ls=':', alpha=0.8, label='r̂ (P_lin2)')
+        cfg = d['cfg']
+        name = f"{exp} {cfg['tag']}, " + (f"h={cfg['width']}" if cfg['model'] == 'mlp' else f"k={cfg['width']}")
+        ax.set_title(f"{name}\nα={cfg['alpha']:g}, drift {_drift(d):.2f}", fontsize=8, color=INK)
         ax.set_yscale('log')
         ax.set_xlabel('replay ratio r')
     axes[0][0].set_ylabel('steps to joint band T(r)')
-    axes[0][0].legend(fontsize=7)
+    _legend_below(fig, axes[0], ncol=5)
     save(fig, out, 'fig1_curves')
 
 
@@ -76,19 +97,27 @@ def fig2(df, out):
         return
     fig, axes = plt.subplots(1, len(meths), figsize=(2.7 * len(meths), 2.6), sharey=True, squeeze=False)
     bins = np.logspace(-2, 0.3, 8)
+    groups = [('E1', lambda s: s.exp == 'E1', C[0], 0.45),
+              ('E2, eNTK planner', lambda s: (s.exp == 'E2') & (s.kernel != 'pntk'), C[2], 0.6),
+              ('E2, pNTK planner', lambda s: (s.exp == 'E2') & (s.kernel == 'pntk'), C[1], 0.75),
+              ('E1N, E1W', lambda s: s.exp.isin(['E1N', 'E1W']), INK2, 0.3)]
     for ax, (m, lab) in zip(axes[0], meths):
         s = df[(df.method == m) & df.regret.notna() & df.drift.notna()]
-        ax.scatter(s.drift, s.regret, s=9, color=C[0], alpha=0.45, linewidths=0)
+        for name, sel, col, al in groups:
+            g = s[sel(s)]
+            if len(g):
+                ax.scatter(g.drift, g.regret, s=9, color=col, alpha=al, linewidths=0, label=name)
         idx = np.digitize(s.drift, bins)
         xs = [s.drift[idx == k].median() for k in np.unique(idx)]
         ys = [np.exp(np.log(s.regret[idx == k]).mean()) for k in np.unique(idx)]
-        ax.plot(xs, ys, '-', color=INK, lw=1.5)
+        ax.plot(xs, ys, '-', color=INK, lw=1.5, label='geometric mean per drift bin (all)')
         ax.axhline(1.0, color=INK2, lw=0.8)
-        ax.axvline(LAZY_DRIFT, color=INK2, lw=0.8, ls=':')
+        ax.axvline(LAZY_DRIFT, color=INK2, lw=0.8, ls=':', label='lazy / rich boundary (drift 0.2)')
         ax.set_xscale('log')
         ax.set_title(lab, fontsize=8, color=INK)
         ax.set_xlabel('kernel drift (best fixed-r run)')
     axes[0][0].set_ylabel('regret  T / T_best')
+    _legend_below(fig, axes[0], ncol=5)
     save(fig, out, 'fig2_regret')
 
 
@@ -118,40 +147,87 @@ def fig3(df, out):
         a2.axhline(1.0, color=INK2, lw=0.8)
         a2.set_xscale('log'); a2.set_yscale('log')
         plain = matplotlib.ticker.FuncFormatter(lambda v, _: f'{v:g}')
-        a2.yaxis.set_major_formatter(plain); a2.yaxis.set_minor_formatter(plain)
+        lead = lambda v: round(v / 10 ** np.floor(np.log10(v)), 6) if v > 0 else 0
+        short = lambda: np.log10(a2.get_ylim()[1] / a2.get_ylim()[0]) < 1.2     # less than ~a decade shown
+        minor = matplotlib.ticker.FuncFormatter(lambda v, _: f'{v:g}' if (lead(v) in (2, 5) or short()) else '')
+        a2.yaxis.set_major_formatter(plain); a2.yaxis.set_minor_formatter(minor)   # label 1, 2, 5, 10, 20, 50 ...
         a2.set_xlabel('kernel drift (best fixed-r run)')
         a2.set_ylabel('wall-clock regret (kernels, plans incl.)')
         a2.legend(fontsize=7, loc='best')
     save(fig, out, 'fig3_cost')
 
 
+def _trace_xy(m, H):
+    tr = m['trace']
+    T = m.get('T') or H
+    return [p[0] for p in tr] + [T], [p[1] for p in tr] + [tr[-1][1]]
+
+
+def _relin_ticks(ax, m, col):
+    rt = m.get('relin_t') or []
+    if rt:                                        # re-linearisations: ticks along the top edge of the panel
+        ax.plot(rt, [0.97] * len(rt), '|', color=col, ms=7, mew=1.5, transform=ax.get_xaxis_transform(),
+                label='re-linearisation')
+
+
 def fig4(jobs, out, results_dir):
-    js = [d for d in jobs if d['cfg']['exp'] == 'E1' and 'mpc_0.05' in d['methods'] and d.get('drift')]
+    """(a, b) the richest E1 job: r(t) of mpc_0.05 and replan_only, and the losses; (c) a typical lazy E1 job
+    (mpc2 / mpc step ratio closest to the median): r(t) of mpc_0.05 and mpc2_0.05 and the first two-phase plan."""
+    E1 = [d for d in jobs if d['cfg']['exp'] == 'E1' and d.get('drift') and d['oracle']['T_best']]
+    js = [d for d in E1 if 'mpc_0.05' in d['methods'] and d['methods']['mpc_0.05'].get('trace')]
     if not js:
         return
-    d = max(js, key=lambda d: d['drift'].get('full_best', d['drift'].get('sub_best', 0)))
+    d = max(js, key=_drift)
+    ok = lambda x, m: bool((x['methods'].get(m) or {}).get('T')) and bool(x['methods'][m].get('trace'))
+    lz = [x for x in E1 if _drift(x) < LAZY_DRIFT and ok(x, 'mpc_0.05') and ok(x, 'mpc2_0.05')]
+    lazy = None
+    if lz:
+        rat = [x['methods']['mpc2_0.05']['T'] / x['methods']['mpc_0.05']['T'] for x in lz]
+        lazy = lz[int(np.argmin(np.abs(np.array(rat) - np.median(rat))))]
+    fig, axs = plt.subplots(1, 3 if lazy else 2, figsize=(11.1 if lazy else 7.4, 2.9))
+    a1, a2 = axs[0], axs[1]
     z = np.load(os.path.join(results_dir, d['cfg']['exp'], f"{d['job_id']}.npz"))
-    fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.4, 2.8))
-    ib = d['oracle']['r'].index(d['oracle']['r_best'])
+    r_best = d['oracle']['r_best']
+    ib = d['oracle']['r'].index(r_best)
     t = z[f'or_t_{ib}']
-    a2.plot(t, z[f'or_LB_{ib}'], color=C[0], label=f"fixed r*={d['oracle']['r_best']} : L_B")
-    a2.plot(t, z[f'or_LA_{ib}'], color=C[0], ls='--', label='fixed r* : L_A')
-    for k, (m, col) in enumerate([('mpc_0.05', C[1]), ('replan_only', C[2])]):
-        if m not in d['methods']:
+    a1.axhline(r_best, color=C[0], lw=1.5, label=f'fixed r* = {r_best:g}')
+    a2.plot(t, z[f'or_LB_{ib}'], color=C[0])
+    a2.plot(t, z[f'or_LA_{ib}'], color=C[0], ls='--')
+    for m, col in [('mpc_0.05', C[1]), ('replan_only', C[2])]:
+        if m not in d['methods'] or not d['methods'][m].get('trace'):
             continue
-        tr = d['methods'][m]['trace']
-        T = d['methods'][m]['T'] or d['H']
-        xs = [p[0] for p in tr] + [T]
-        ys = [p[1] for p in tr] + [tr[-1][1]]
+        xs, ys = _trace_xy(d['methods'][m], d['H'])
         a1.step(xs, ys, where='post', color=col, label=m)
+        _relin_ticks(a1, d['methods'][m], col)
         a2.plot(z[f'm_{m}_t'], z[f'm_{m}_LB'], color=col)
         a2.plot(z[f'm_{m}_t'], z[f'm_{m}_LA'], color=col, ls='--')
-    a1.axhline(d['oracle']['r_best'], color=C[0], lw=1)
-    a1.set_xlabel('step'); a1.set_ylabel('replay ratio r(t)'); a1.legend(fontsize=7)
+    a1.set_xlabel('step'); a1.set_ylabel('replay ratio r(t)')
+    a1.set_title(f"rich: {d['cfg']['tag']}, h={d['cfg']['width']}, α={d['cfg']['alpha']:g}, drift {_drift(d):.2f}",
+                 fontsize=8, color=INK)
     a2.axhline(d['phaseA']['tauB'], color=INK2, lw=0.8, ls=':')
     a2.axhline(d['phaseA']['tauA'], color=INK2, lw=0.8, ls='-.')
-    a2.set_yscale('log'); a2.set_xlabel('step'); a2.set_ylabel('training loss'); a2.legend(fontsize=7)
-    a1.set_title(f"{d['cfg']['tag']} α={d['cfg']['alpha']:g}", fontsize=8)
+    style = [plt.Line2D([], [], color=INK2, lw=1.5), plt.Line2D([], [], color=INK2, lw=1.5, ls='--'),
+             plt.Line2D([], [], color=INK2, lw=0.8, ls=':'), plt.Line2D([], [], color=INK2, lw=0.8, ls='-.')]
+    a2.legend(style, ['L_B', 'L_A', 'band edge τ_B', 'band edge τ_A'], fontsize=7, ncol=2)
+    a2.set_yscale('log'); a2.set_xlabel('step'); a2.set_ylabel('training loss (colours as left)')
+    a2.set_title('same job: training losses', fontsize=8, color=INK)
+    if lazy:
+        a3 = axs[2]
+        rb = lazy['oracle']['r_best']
+        a3.axhline(rb, color=C[0], lw=1.5)
+        for m, col in [('mpc_0.05', C[1]), ('mpc2_0.05', C[3])]:
+            xs, ys = _trace_xy(lazy['methods'][m], lazy['H'])
+            a3.step(xs, ys, where='post', color=col, label=m)
+        p2 = lazy['methods']['mpc2_0.05'].get('plans2') or []
+        if p2:                                    # the first two-phase plan: r1 for t_switch steps, then r2
+            t0, r1, r2, ts = p2[0]
+            end = lazy['methods']['mpc2_0.05']['T']
+            a3.plot([t0, t0 + ts, t0 + ts, end], [r1, r1, r2, r2], color=C[3], lw=1, ls='--', alpha=0.8,
+                    label='first two-phase plan')
+        a3.set_xlabel('step'); a3.set_ylabel('replay ratio r(t)')
+        a3.set_title(f"lazy: {lazy['cfg']['tag']}, h={lazy['cfg']['width']}, α={lazy['cfg']['alpha']:g}, "
+                     f"drift {_drift(lazy):.2f}", fontsize=8, color=INK)
+    _legend_below(fig, [a1] + ([axs[2]] if lazy else []), ncol=6)
     save(fig, out, 'fig4_traces')
 
 
@@ -203,17 +279,34 @@ def fig6(jt, out):
     w = jt[jt.exp == 'E1W']
     if not len(w):
         return
-    fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.4, 2.8))
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.4, 2.9))
     for k, (tag, g) in enumerate(w.groupby('tag')):
-        g2 = g.groupby('width').agg(T=('T_best', lambda x: np.exp(np.log(x.dropna()).mean()) if x.notna().any() else np.nan),
-                                    acc=('acc_B_best', 'mean'))
-        a1.plot(g2.index, g2['T'], 'o-', color=C[k], ms=4, label=f'band: {tag}')
-        a2.plot(g2.index, g2['acc'], 'o-', color=C[k], ms=4, label=f'band: {tag}')
+        rows = []
+        for h, gh in g.groupby('width'):
+            hit = gh.T_best.notna()
+            rows.append(dict(h=h, n=len(gh), n_ok=int(hit.sum()), H=float(gh.H.max()),
+                             T=float(np.exp(np.log(gh.T_best[hit].astype(float)).mean())) if hit.any() else np.nan,
+                             acc=float(gh.acc_B_best[hit].mean()) if hit.any() else np.nan))
+        t = pd.DataFrame(rows).sort_values('h')
+        some = t[t.n_ok > 0]
+        full, part, none = t[t.n_ok == t.n], t[(t.n_ok > 0) & (t.n_ok < t.n)], t[t.n_ok == 0]
+        col = C[k]
+        for a, y in ((a1, 'T'), (a2, 'acc')):
+            a.plot(some.h, some[y], '-', color=col, lw=1.5)
+            a.plot(full.h, full[y], 'o', color=col, ms=4, label=f'band {tag}: every seed in the band')
+            a.plot(part.h, part[y], 'o', color=col, mfc='white', ms=5,
+                   label='some seeds in the band (mean of those)')
+            for _, p in part.iterrows():
+                a.annotate(f"{int(p.n_ok)}/{int(p.n)} seeds", (p.h, p[y]), textcoords='offset points', xytext=(5, -3),
+                           fontsize=7, color=col)
+        if len(none):
+            a1.plot(none.h, none.H, 'v', color=INK2, ms=4, label=f'no seed in the band within H')
     for a in (a1, a2):
         a.set_xscale('log', base=2); a.set_xlabel('hidden width h')
-        a.axvline(20000 / 794, color=INK2, lw=0.8, ls=':')
-    a1.set_yscale('log'); a1.set_ylabel('T* (best fixed r)'); a1.legend(fontsize=7)
+        a.axvline(20000 / 794, color=INK2, lw=0.8, ls=':', label='parameter count = (n_A + n_B) C, h ≈ 25')
+    a1.set_yscale('log'); a1.set_ylabel('T* (best fixed r)')
     a2.set_ylabel('task-B test accuracy at T*')
+    _legend_below(fig, [a1, a2], ncol=2)
     save(fig, out, 'fig6_width')
 
 
